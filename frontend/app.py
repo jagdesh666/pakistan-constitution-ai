@@ -10,7 +10,13 @@ import uuid
 import pandas as pd
 
 import os
-API_BASE_URL = os.getenv("API_BASE_URL", "https://pakistan-constitution-ai.onrender.com")
+
+# Automatically sanitizes the URL to guarantee /api/v1 is always present
+raw_base_url = os.getenv("API_BASE_URL", "https://pakistan-constitution-ai.onrender.com").strip().rstrip("/")
+if not raw_base_url.endswith("/api/v1"):
+    API_BASE_URL = f"{raw_base_url}/api/v1"
+else:
+    API_BASE_URL = raw_base_url
 
 st.set_page_config(
     page_title="Pakistan Legal Intelligence Platform",
