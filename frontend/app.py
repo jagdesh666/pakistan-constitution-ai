@@ -9,7 +9,8 @@ import requests
 import uuid
 import pandas as pd
 
-API_BASE_URL = "http://127.0.0.1:8000/api/v1"
+import os
+API_BASE_URL = os.getenv("API_BASE_URL", "https://pakistan-constitution-ai.onrender.com")
 
 st.set_page_config(
     page_title="Pakistan Legal Intelligence Platform",
